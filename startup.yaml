@@ -1,0 +1,9 @@
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - ./install_ruby.sh
+    - ./install_mongodb.sh
+    - ./deploy.sh
