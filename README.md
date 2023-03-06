@@ -16,17 +16,17 @@ yc compute instance create \
 -----HW Cloud-Bastion
 
 
-bastion_IP = 158.160.34.18
+bastion_IP = 158.160.50.237
 someinternalhost_IP = 10.128.0.35
 
 Способ подключения в одну команду к хосту someinternalhost c помощью ключа -J
-ssh -i ~/.ssh/denisv003 -J denisv003@158.160.34.18 denisv003@10.128.0.35
+ssh -i ~/.ssh/denisv003 -J denisv003@158.160.50.237 denisv003@10.128.0.35
 
 Дополнительное задание: подключение к хосту ssh someinternalhost
 Подключение через alias, добавленный в файл .ssh/config
 
 Host bastionhost
-  Hostname 158.160.34.18
+  Hostname 158.160.50.237
   User denisv003
   IdentityFile /home/voloshchik/.ssh/denisv003
   ForwardAgent yes
