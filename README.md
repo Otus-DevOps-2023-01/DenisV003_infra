@@ -1,11 +1,8 @@
 # DenisV003_infra
 DenisV003 Infra repository
-
 ----HW cloudtest_app
-
-testapp_IP = 84.201.131.10
+testapp_IP = 158.160.61.142
 testapp_port = 9292
-
 Доп.задание: команда для запуска инстанса CLI.( не уверен в правильности написания файла startup.yaml)
 yc compute instance create \
   --name reddit-app \
@@ -17,6 +14,7 @@ yc compute instance create \
   --metadata serial-port-enable=1 \
 
 -----HW Cloud-Bastion
+
 
 bastion_IP = 158.160.34.18
 someinternalhost_IP = 10.128.0.35
