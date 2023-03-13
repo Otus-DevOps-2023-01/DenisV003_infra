@@ -1,0 +1,8 @@
+{
+  "type": "yandex",
+  "token": "YOUR OAUTH TOKEN",
+  "folder_id": "YOUR FOLDER ID",
+  "source_image_family": "ubuntu-1804-lts",
+  "ssh_username": "ubuntu",
+  "use_ipv4_nat": "true"
+}
