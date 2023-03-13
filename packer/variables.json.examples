@@ -1,8 +1,7 @@
 {
-  "type": "yandex",
-  "token": "YOUR OAUTH TOKEN",
-  "folder_id": "YOUR FOLDER ID",
-  "source_image_family": "ubuntu-1804-lts",
-  "ssh_username": "ubuntu",
-  "use_ipv4_nat": "true"
+  "fid": "a1tt7rgor1vsq",
+  "source_image_fam": "ubuntu-1804-lts",
+  "service_account_key": "/home/Otuskey.json",
+  "image_fam": "reddit",
+  "disk_size": "10"
 }
