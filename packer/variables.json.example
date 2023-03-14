@@ -1,0 +1,7 @@
+{
+  "fid": "a1tt7rgor1vsq",
+  "source_image_fam": "ubuntu-1804-lts",
+  "service_account_key": "./key.json",
+  "image_fam": "reddit",
+  "disk_size": "10"
+}
