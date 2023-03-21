@@ -1,0 +1,71 @@
+# Все задания выполнены согласно описанию в ТЗ
+# Самостоятельные задания
+  ## 1. Определите input переменную для приватного ключа,использующегося в определении подключения для провижинеров (connection)
+    Переменная была добавлена в terraform.tfvars и добавлено описание в variables.tf, connection теперь выглядит так
+    connection {
+    type  = "ssh"
+    host  = self.network_interface.0.nat_ip_address
+    user  = "ubuntu"
+    agent = false
+    # путь до приватного ключа
+    private_key = file(var.private_key)
+ ## 2.Определите input переменную для задания зоны в ресурсе "yandex_compute_instance" "app". У нее должно быть значение по умолчанию 
+     Переменная была добавлена в terraform.tfvars и добавлено описание в variables.tf, resoutce теперь выглядит так:
+     resource "yandex_compute_instance" "app" {
+     name  = "reddit-app-${count.index}"
+     count = var.count_app
+     zone  = var.zone      
+ ## 3. Создан файл terraform.tfvars.example
+    cloud_id                 = "bbbbbbbbbbbbbbbbbbe"
+    folder_id                = "bwwwwwwwwwwbbbbbwwq"
+    zone                     = "ru-central1-a"
+    image_id                 = "fd8vfbci6kikkq615kn3"
+    subnet_id                = "e9baugga0kt6rc1sbhr5"
+    service_account_key_file = "./key.json"
+    count_app                = "2"
+    private_key_path         = "~/.ssh/ubuntu"
+    public_key_path          = "~/.ssh/ubuntu.pub"
+ ## Задание со **
+   Создан файл lb.tf с описанием когда балансировщика, направляющего трафик на reddit-app.
+    resource "yandex_lb_target_group" "loadbalancer" {
+    name = "lb-group"
+    dynamic "target" {
+    for_each = yandex_compute_instance.app.*.network_interface.0.ip_address
+    content {
+      address   = target.value
+      subnet_id = var.subnet_id
+    }
+    }
+    #target {
+    # address   = yandex_compute_instance.app.network_interface.0.ip_address
+    #subnet_id = var.subnet_id
+    #}
+    #target {
+    #address   = yandex_compute_instance.app2.network_interface.0.ip_address
+    # subnet_id = var.subnet_id
+    #}# 
+    }
+    resource "yandex_lb_network_load_balancer" "external-lb-test" {
+    name = "external-lb-test"
+    type = "external"
+
+    listener {
+    name        = "my-listener"
+    port        = 8080
+    target_port = 9292
+    external_address_spec {
+      ip_version = "ipv4"
+    }
+    } 
+    attached_target_group {
+    target_group_id = yandex_lb_target_group.loadbalancer.id
+
+    healthcheck {
+      name = "http"
+      http_options {
+        port = 9292
+      }
+    }
+    }
+    }
+  ## 
