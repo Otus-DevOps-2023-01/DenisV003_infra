@@ -12,11 +12,11 @@ provider "yandex" {
   token                    = var.ycloud_token
   cloud_id                 = var.cloud_id
   folder_id                = var.folder_id
-  zone                     = var.zone
 }
 resource "yandex_compute_instance" "app" {
   name  = "reddit-app-${count.index}"
   count = var.count_app
+  zone  = var.zone
   resources {
     cores  = 2
     memory = 2
