@@ -1,8 +1,8 @@
-# variable "ycloud_token" {
-#   type        = string
-#   description = "yandex cloud access token"
-#   sensitive   = true
-# }
+variable "ycloud_token" {
+  type        = string
+  description = "yandex cloud access token"
+  # sensitive   = true
+}
 variable "cloud_id" {
   description = "Cloud"
 }
