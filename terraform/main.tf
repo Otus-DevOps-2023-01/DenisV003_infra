@@ -1,18 +1,18 @@
-terraform {
-  required_providers {
-    yandex = {
-      source = "yandex-cloud/yandex"
-      version = ">=0.35"
-    }
-  }
-  required_version = ">= 0.13"
-}
+# terraform {
+#   required_version = "~> 0.12"
+#   required_providers {
+#     yandex = {
+#       source  = "yandex-cloud/yandex"
+#       version = "~> 0.35"
+#     }
+#   }
+# }
 provider "yandex" {
   service_account_key_file = var.service_account_key_file
-  #token     = var.ycloud_token
-  cloud_id  = var.cloud_id
-  folder_id = var.folder_id
-  zone      = var.zone
+  token                    = var.ycloud_token
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
+  zone                     = var.zone
 }
 resource "yandex_compute_instance" "app" {
   name  = "reddit-app-${count.index}"
