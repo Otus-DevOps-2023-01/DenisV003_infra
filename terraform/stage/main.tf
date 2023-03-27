@@ -7,6 +7,11 @@
 #     }
 #   }
 # }
+resource "yandex_storage_bucket" "state" {
+  bucket     = "terraform-2-storage-bucket"
+  access_key = var.access_key
+  secret_key = var.secret_key
+}
 provider "yandex" {
   service_account_key_file = var.service_account_key_file
   token                    = var.ycloud_token
