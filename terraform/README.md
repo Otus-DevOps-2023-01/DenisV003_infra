@@ -33,7 +33,7 @@
 # Самостоятельные задания
   ## 1. Определите input переменную для приватного ключа,использующегося в определении подключения для провижинеров (connection)
     Переменная была добавлена в terraform.tfvars и добавлено описание в variables.tf, connection теперь выглядит так
-   ``` 
+   
     connection {
     type  = "ssh"
     host  = self.network_interface.0.nat_ip_address
@@ -41,16 +41,16 @@
     agent = false
     # путь до приватного ключа
     private_key = file(var.private_key) }
-  ```
+  
  ## 2.Определите input переменную для задания зоны в ресурсе "yandex_compute_instance" "app". У нее должно быть значение по умолчанию 
      Переменная была добавлена в terraform.tfvars и добавлено описание в variables.tf, resoutce теперь выглядит так:
-  ``` resource "yandex_compute_instance" "app" {
+   resource "yandex_compute_instance" "app" {
      name  = "reddit-app-${count.index}"
      count = var.count_app
      zone  = var.zone       
-  ```
+   }
  ## 3. Создан файл terraform.tfvars.example
- ``` cloud_id                 = "bbbbbbbbbbbbbbbbbbe"
+    cloud_id                 = "bbbbbbbbbbbbbbbbbbe"
     folder_id                = "bwwwwwwwwwwbbbbbwwq"
     zone                     = "ru-central1-a"
     image_id                 = "fd8vfbci6kikkq615kn3"
@@ -59,10 +59,10 @@
     count_app                = "2"
     private_key_path         = "~/.ssh/ubuntu"
     public_key_path          = "~/.ssh/ubuntu.pub" 
-  ```
+ 
    ## Задание со **
    Создан файл lb.tf с описанием когда балансировщика, направляющего трафик на reddit-app.  
-    ``` resource "yandex_lb_target_group" "loadbalancer" {  
+    resource "yandex_lb_target_group" "loadbalancer" {  
     name = "lb-group"  
     dynamic "target" {  
     for_each = yandex_compute_instance.app.*.network_interface.0.ip_address  
@@ -101,10 +101,10 @@
     }
     }
     }
-    ```
+    
   ## Добавление инстанса reddit-app2
     Добавил блок resource "yandex_compute_instance" "app2" в файле main.tf с описанием. Минусы такого подхода в создании для каждого инстанса своего ресурса, большого количества времени на написание.
-    ``` resource "yandex_compute_instance" "app2" {
+     resource "yandex_compute_instance" "app2" {
       name = "reddit-app2"
       #count = var.count_app
       resources {
@@ -141,15 +141,15 @@
      script = "files/deploy.sh"
    }
   }
-    ```  
+      
 Выходные переменные output.rf  
- ``` output "external_ip_address_app" {
+  output "external_ip_address_app" {
   value = yandex_compute_instance.app.*.network_interface.0.nat_ip_address
 }
  output "external_ip_address_app2" {
    value = yandex_compute_instance.app2.network_interface.0.nat_ip_address
  } 
- ```
+ 
 ## Задание со **
   Удалите описание reddit-app2 и попробуйте подход с заданием
   количества инстансов через параметр ресурса count.
@@ -157,19 +157,19 @@
   умолчанию равна 1
   Убираем блок с описанием инстанса reddit-app в main.tf и output.tf. Добавляем новую переменную count_app
   ### variables.tf
-  ``` variable "count_app" {
+   variable "count_app" {
   description = "count instances"
   default     = 1
   }
-  ```
+  
   ### terraform.tfvars 
     count_app = 2
   Изменяем файл main.tf (укажу только те строки, которые изменены)
-  ``` resource "yandex_compute_instance" "app" {
+   resource "yandex_compute_instance" "app" {
   name  = "reddit-app-${count.index}"
   count = var.count_app } -->
   Добавляем динамическую группу в lb.tf 
-  ```resource "yandex_lb_target_group" "loadbalancer" {
+  resource "yandex_lb_target_group" "loadbalancer" {
   name = "lb-group"
   dynamic "target" {
     for_each = yandex_compute_instance.app.*.network_interface.0.ip_address
@@ -177,9 +177,9 @@
       address   = target.value
       subnet_id = var.subnet_id
     }
-  ``` 
+   
   ### output.tf
-  ``` output "yandex_lb_network_load_balancer" {
+   output "yandex_lb_network_load_balancer" {
      value = yandex_lb_network_load_balancer.external-lb-test.listener.*.external_address_spec[0].*.address
      } 
-  ```
+  
