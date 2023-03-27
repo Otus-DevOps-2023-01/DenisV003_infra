@@ -1,5 +1,4 @@
-<details>
-<summary>Terraform 2</summary>
+  ## Terraform 2
   Принципы организации инфраструктурного кода и работа над инфраструктурой в команде на примере Terraform  
   1. Создали ветку terraform-2
   2. Выполнил сборку образа для разных VM с созданием шаблона db.json и app.json
@@ -12,7 +11,7 @@
   9. Выполнил самостоятельные задания
   Задание со * .
   Создал файл backend.tf в каждой из директории stage/prod. Выполнил команды terraform init / terraform apply
-  ```
+  
     terraform {
     backend "s3" {
     endpoint   = "storage.yandexcloud.net"
@@ -26,12 +25,11 @@
     skip_credentials_validation = true
     }
   }
-    ```
+   
   Возможно настроил чтото не так, но автотест прошел успешно. 
-<details>
 
-<details>
-<summary>Terraform 1</summary>
+
+# Terraform 1
 # Все задания выполнены согласно описанию в ТЗ
 # Самостоятельные задания
   ## 1. Определите input переменную для приватного ключа,использующегося в определении подключения для провижинеров (connection)
@@ -186,4 +184,3 @@
      value = yandex_lb_network_load_balancer.external-lb-test.listener.*.external_address_spec[0].*.address
      } 
   ```
-<details>
