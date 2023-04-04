@@ -44,7 +44,7 @@ variable db_disk_image {
 }
 variable access_key {
   description = "Access key service account"
-}  
+}
 variable secret_key {
   description = "Secret key service account"
 }
