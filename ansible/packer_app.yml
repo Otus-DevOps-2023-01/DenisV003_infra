@@ -2,8 +2,11 @@
 - name: Install Ruby && Bundler
   hosts: all
   become: true
-  gather_facts: false
+  gather_facts: true
   tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      update_cache: yes
   # Установим в цикле все зависимости
   - name: Install ruby and rubygems and required packages
     apt: "name={{ item }} state=present"
