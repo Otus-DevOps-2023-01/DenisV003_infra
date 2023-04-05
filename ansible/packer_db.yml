@@ -8,12 +8,6 @@
     apt_key:
       keyserver: hkp://keyserver.ubuntu.com:80 
       id: D68FA50FEA312927
-  # - name: Import the public key used by the package management system
-  #   apt_key: 
-  #     keyserver : hkp://keyserver.ubuntu.com:80 
-  #     id : 7F0CEB10 
-  #     state : present 
-  # Подключаем репозиторий с пакетами mongodb
   - name: Add APT repository
     apt_repository:
       filename: '/etc/apt/sources.list.d/mongodb-org-3.2.list'
