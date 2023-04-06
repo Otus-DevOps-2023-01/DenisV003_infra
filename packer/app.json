@@ -25,9 +25,14 @@
     "provisioners": [
         {
             "type": "ansible",
+            "ansible_ssh_extra_args" : [
+                "-o IdentitiesOnly=yes -o PubkeyAcceptedAlgorithms=+ssh-rsa -o HostkeyAlgorithms=+ssh-rsa"
+            ],
             "user": "ubuntu", 
-            "playbook_file": "ansible/packer_app.yml"
-            
+            "playbook_file": "ansible/packer_app.yml",
+            "pause_before" : "60s"
+                        
         }
     ]
 }
+
