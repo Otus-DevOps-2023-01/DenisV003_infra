@@ -1,7 +1,7 @@
 {
   "fid": "b1ggnsla1tt7rgor1vsq",
   "source_image_fam": "ubuntu-1804-lts",
-  "service_account_key": "/home/dvoloshchik/Otus/Otus_key.json",
+  "service_account_key": "/home/dvoloshchik/Otus/Otuskey.json",
   "image_fam": "reddit-base",
   "disk_size": "10"
 }
