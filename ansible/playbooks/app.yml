@@ -1,4 +1,5 @@
 ---
+---
 - name: Configure APP
   hosts: app
   become: true
