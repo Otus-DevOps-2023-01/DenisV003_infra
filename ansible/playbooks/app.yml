@@ -5,6 +5,6 @@
   become: true
   # tags: app-tag
   roles:
-    - app
-    - jdauphant.nginx
+  - app
+  - jdauphant.nginx
    
