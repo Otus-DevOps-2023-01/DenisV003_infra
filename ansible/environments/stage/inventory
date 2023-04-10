@@ -1,0 +1,8 @@
+
+[app] 
+appserver ansible_host=51.250.77.230
+
+[db]
+dbserver ansible_host=158.160.63.142
+[all:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=accept-new'

@@ -1,0 +1,8 @@
+---
+- name: Configure DB
+  hosts: db
+  # tags: db-tag
+  become: true
+  roles:
+    - db
+    
