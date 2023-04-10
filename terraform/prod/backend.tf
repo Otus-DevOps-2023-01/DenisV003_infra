@@ -5,8 +5,8 @@ terraform {
     bucket     = "terraform-2-storage-bucket"
     region     = "ru-central1"
     key        = "stage.tfstate"
-    access_key = "YCAJEL_Jc5jE5PEPgWPOuIm5I"
-    secret_key = "YCODWiiWK3psyY2TBxQ7sTJywSOmcFBrBGzCNHK_"
+    access_key = "YCAJEpcmLx81tOidKrDQcRXBE"
+    secret_key = "YCMlAf-cP2ANDSD0QOWq26T8Bcz04AJtQqd_WcMh"
 
     skip_region_validation      = true
     skip_credentials_validation = true
