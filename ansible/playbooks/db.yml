@@ -4,4 +4,4 @@
   # tags: db-tag
   become: true
   roles:
-  - db
+    - db

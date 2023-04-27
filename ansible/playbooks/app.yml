@@ -1,10 +1,7 @@
-
 ---
 - name: Configure APP
   hosts: app
   become: true
-  # tags: app-tag
   roles:
-  - app
-  - jdauphant.nginx
-   
+    - app
+    - jdauphant.nginx
