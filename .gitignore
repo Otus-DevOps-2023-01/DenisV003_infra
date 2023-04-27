@@ -5,3 +5,6 @@
 .terraform/
 *.retry
 variables.json
+roles/jdauphant.nginx
+jdauphant.nginx
+vault.key
